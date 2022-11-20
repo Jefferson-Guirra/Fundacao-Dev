@@ -2,6 +2,7 @@ import * as C from './styles'
 import Image from 'next/image'
 import logo from '../../../public/images/logo.svg'
 import Link from 'next/link'
+import {ActiveLink} from '../ActiveLink'
 
 export const Header = () => {
   return (
@@ -11,9 +12,9 @@ export const Header = () => {
           <Image src={logo} alt="Sujeito Programador Logo" />
         </Link>
         <nav>
-          <Link className='active' href="/">Home</Link>
-          <Link href="/posts">Conteúdos</Link>
-          <Link href="/sobre">Sobre</Link>
+          <ActiveLink activeClassName='active'  href="/">Home</ActiveLink>
+          <ActiveLink activeClassName='active' href="/posts">Conteúdos</ActiveLink>
+          <ActiveLink activeClassName='active' href="/sobre">Sobre</ActiveLink>
         </nav>
         <a className='readyButton' type='button' href="https://sujeitoprogramador.com">COMEÇAR</a>
       </div>
