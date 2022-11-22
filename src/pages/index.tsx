@@ -4,17 +4,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import techImage from '../../public/images/techs.svg'
 import { GetStaticProps } from 'next'
-
-import {  SliceZone } from '@prismicio/react'
-
 import { createClient } from '../services/prismicio'
-import { components } from '../../slices'
-import { MODERN_BROWSERSLIST_TARGET } from 'next/dist/shared/lib/constants'
 
 
-const Page = ({ page, navigation, settings }: any) => {
+
+/*const Page = ({ page, navigation, settings }: any) => {
   return <SliceZone slices={page.data.slices} components={components} />
-}
+}*/
 
 type Props = {
     content : {
