@@ -1,8 +1,36 @@
 import * as C from '../styles/home'
+import * as prismicR from '@prismicio/richtext'
 import Head from 'next/head'
 import Image from 'next/image'
 import techImage from '../../public/images/techs.svg'
-export default function Home() {
+import { GetStaticProps } from 'next'
+
+import {  SliceZone } from '@prismicio/react'
+
+import { createClient } from '../services/prismicio'
+import { components } from '../../slices'
+import { MODERN_BROWSERSLIST_TARGET } from 'next/dist/shared/lib/constants'
+
+
+const Page = ({ page, navigation, settings }: any) => {
+  return <SliceZone slices={page.data.slices} components={components} />
+}
+
+type Props = {
+    content : {
+    title: string,
+    titleContent: string,
+    linkAction: string,
+    mobileTitle: string,
+    mobileContent: string,
+    mobileBanner: string,
+    webTitle: string,
+    webContent: string,
+    webBanner: string
+  }
+}
+
+export default function Home({content}:Props) {
   return (
     <>
       <Head>
@@ -11,13 +39,11 @@ export default function Home() {
       <C.container>
         <div className="containerHeader">
           <section className="ctaText">
-            <h1>Levando você ao próximo nível!</h1>
+            <h1>{content.title}</h1>
             <span>
-              Uma plataforma com cursos que vão do zero ate o profissional na
-              pratica, direto ao ponto aplicando o que usamos no mercado de
-              trabalho.
+              {content.titleContent}
             </span>
-            <a>
+            <a href={content.linkAction} >
               <button>COMEÇAR AGORA!</button>
             </a>
           </section>
@@ -30,14 +56,13 @@ export default function Home() {
 
         <C.sectionContent>
           <section>
-            <h2>Aprenda a criar aplicativos para Android e IOS</h2>
+            <h2>{content.mobileTitle}</h2>
             <span>
-              Você vai descobrir o jeito mais moderno de desenvolver apps,
-              nativos para IOS e Androis, construindo do zero até a aplicação.
+              {content.mobileContent}
             </span>
           </section>
           <img
-            src="/images/financasApp.png"
+            src={content.mobileBanner}
             alt="conteúdos desenvolvimento de apps"
           />
         </C.sectionContent>
@@ -46,20 +71,23 @@ export default function Home() {
 
         <C.sectionContent>
           <img
-            src="/images/webDev.png"
+            src={content.webBanner}
             alt="conteúdos desenvolvimento de aplicações web"
           />
           <section>
-            <h2>Aprenda a criar sistemas web</h2>
+            <h2>{content.webTitle}</h2>
             <span>
-              Criar sitemas web, sites usando as tecnologias mais modernas e requisitadas pelo mercado.
+              {content.webContent}
             </span>
           </section>
         </C.sectionContent>
 
         <C.nextLevelContent>
-          <Image quality={100} src={ techImage } alt="tecnologias"/>
-          <h2>Mais de <span className='alunos'>15 mil</span> já levaram sua carreira ao próximo nivel.</h2>
+          <Image quality={100} src={techImage} alt="tecnologias" />
+          <h2>
+            Mais de <span className="alunos">15 mil</span> já levaram sua
+            carreira ao próximo nivel.
+          </h2>
           <span>
             E você vai perder a chance de evoluir de uma vez por todas?
           </span>
@@ -70,4 +98,30 @@ export default function Home() {
       </C.container>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+  const client = createClient({ previewData })
+  const page = await client.getSingle('home')
+  const {title,sub_title,link_action,mobile,mobile_content,mobile_banner,title_web,web_content,web_banner} = page.data
+  
+  const content = {
+    title: prismicR.asText(title),
+    titleContent: prismicR.asText(sub_title),
+    linkAction: link_action.url,
+    mobileTitle: prismicR.asText(mobile),
+    mobileContent: prismicR.asText(mobile_content),
+    mobileBanner: mobile_banner.url,
+    webTitle: prismicR.asText(title_web),
+    webContent: prismicR.asText(web_content),
+    webBanner: web_banner.url
+  }
+  
+
+  return {
+    props: {
+      content
+    },
+    revalidate: 60 * 3
+  }
 }
