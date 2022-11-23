@@ -85,7 +85,7 @@ const Posts = ({ postsBlog, page, totalPage }: Props) => {
             <Link key={post.title} href={`/posts/${post.slug}`}>
               <Image
                 src={post.cover.url}
-                alt={post.cover.alt}
+                alt={post.title}
                 width={720}
                 height={410}
                 quality={100}
@@ -131,6 +131,7 @@ export default Posts
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData })
   const pages = await client.getByType('post', {
+    orderings:{field:'document.last_publication_date desc'},
     fetch: ['post.title', 'post.description,post.cover'],
     pageSize: 3
   })
