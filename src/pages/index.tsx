@@ -8,9 +8,6 @@ import { createClient } from '../services/prismicio'
 
 
 
-/*const Page = ({ page, navigation, settings }: any) => {
-  return <SliceZone slices={page.data.slices} components={components} />
-}*/
 
 type Props = {
     content : {
