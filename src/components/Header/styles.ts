@@ -15,6 +15,19 @@ export const headerContainer = styled.header`
     img {
       cursor: pointer;
     }
+    .logo {
+      display: flex;
+      align-items: center;
+      p {
+        font-weight: bold;
+        color: var(--yellow-500);
+        font-size: 1.5rem;
+        span {
+          top: 50%;
+          color: #d91a1a;
+        }
+      }
+    }
 
     nav {
       margin-left: 5rem;
@@ -69,14 +82,14 @@ export const headerContainer = styled.header`
 
     .headerContent {
       flex-direction: column;
-      margin:0 auto;
-      
-      nav{
       margin: 0 auto;
+
+      nav {
+        margin: 0 auto;
       }
 
-      .readyButton{
-        display:none;
+      .readyButton {
+        display: none;
       }
     }
   }

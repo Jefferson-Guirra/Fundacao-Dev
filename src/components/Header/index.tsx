@@ -1,6 +1,6 @@
 import * as C from './styles'
 import Image from 'next/image'
-import logo from '../../../public/images/logo.svg'
+import logo from '../../../public/images/foundation.svg'
 import Link from 'next/link'
 import {ActiveLink} from '../ActiveLink'
 
@@ -8,8 +8,10 @@ export const Header = () => {
   return (
     <C.headerContainer>
       <div className="headerContent">
-        <Link href="/">
-          <Image src={logo} alt="Sujeito Programador Logo" />
+        <Link className='logo' href="/">
+          <Image src={logo} width={100} height={72} alt="Sujeito Programador Logo" />
+            <p>Fundação <span>Dev</span></p>
+          
         </Link>
         <nav>
           <ActiveLink activeClassName='active'  href="/">Home</ActiveLink>

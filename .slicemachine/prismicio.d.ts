@@ -6,6 +6,85 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for about documents */
+interface AboutDocumentData {
+    /**
+     * title field in *about*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Nome da empresa
+     * - **API ID Path**: about.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * description field in *about*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * banner field in *about*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.banner
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    banner: prismicT.ImageField<never>;
+    /**
+     * linkedin field in *about*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: url linkedin da empresa
+     * - **API ID Path**: about.linkedin
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    linkedin: prismicT.LinkField;
+    /**
+     * instagram field in *about*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: url instagram da empresa
+     * - **API ID Path**: about.instagram
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    instagram: prismicT.LinkField;
+    /**
+     * youtube field in *about*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: url youtube da empresa
+     * - **API ID Path**: about.youtube
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    youtube: prismicT.LinkField;
+}
+/**
+ * about document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 /** Content for Home documents */
 interface HomeDocumentData {
     /**
@@ -164,7 +243,7 @@ interface PostDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
-export type AllDocumentTypes = HomeDocument | PostDocument;
+export type AllDocumentTypes = AboutDocument | HomeDocument | PostDocument;
 /**
  * Primary content in Title → Primary
  *
@@ -219,6 +298,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocument, PostDocumentData, PostDocument, AllDocumentTypes, TitleSliceDefaultPrimary, TitleSliceDefault, TitleSliceVariation, TitleSlice };
+        export type { AboutDocumentData, AboutDocument, HomeDocumentData, HomeDocument, PostDocumentData, PostDocument, AllDocumentTypes, TitleSliceDefaultPrimary, TitleSliceDefault, TitleSliceVariation, TitleSlice };
     }
 }
