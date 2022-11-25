@@ -1,5 +1,5 @@
 import thumbImg from '../../../public/images/thumb.png'
-import * as C from './styles'
+import * as C from '../../styles/posts'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'

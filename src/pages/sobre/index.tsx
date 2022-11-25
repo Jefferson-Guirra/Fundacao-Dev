@@ -1,5 +1,5 @@
 import React from 'react'
-import * as C from './styles'
+import * as C from '../../styles/styles'
 import { GetStaticProps } from 'next'
 import { createClient } from '../../services/prismicio'
 import * as prismicR from '@prismicio/richtext'
@@ -73,6 +73,6 @@ export const getStaticProps: GetStaticProps = async({previewData})=>{
     props:{
       about
     },
-    revalidate: 60* 15
+    revalidate: 60 * 15
   }
 }

@@ -3,7 +3,7 @@ import { createClient } from '../../services/prismicio'
 import * as prismicR from '@prismicio/richtext'
 import * as prismicH from '@prismicio/helpers'
 import Head from 'next/head'
-import * as C from './post'
+import * as C from '../../styles/post'
 import Image from 'next/image'
 import React from 'react'
 
@@ -72,6 +72,9 @@ export const getServerSideProps : GetServerSideProps = async ({params,previewDat
   }catch(err){
     console.log(err)
     return{
+      props:{
+        post:null
+      },
       redirect:{
         destination:'/posts',
         permanent:false
