@@ -20,7 +20,7 @@ O site é composto por quatro seções:
 - **Home:** Aqui temos a apresentaçao do instituição;
 - **Conteúdo:** Nesta seção se encontra todos os posts;
 - **Detalhes:** Apresenta os detalhes do post escolhido;
-- **sobre:** Detlahes sobre a instituição;
+- **sobre:** Detalhes sobre a instituição;
 
 
 ---
