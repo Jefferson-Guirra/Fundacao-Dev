@@ -4,8 +4,6 @@
   <p align="center">
   <img align="center" src="public/images/fundacao-dev-read-me.JPG" alt="fundação dev">
   <p>
-
-<br>
  
  > Levando você ao próximo nível!!
     
