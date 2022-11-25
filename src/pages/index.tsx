@@ -115,6 +115,6 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     props: {
       content
     },
-    revalidate: 60 * 3
+    revalidate: 60 * 5
   }
 }

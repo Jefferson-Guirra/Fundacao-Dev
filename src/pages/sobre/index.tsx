@@ -72,6 +72,7 @@ export const getStaticProps: GetStaticProps = async({previewData})=>{
   return{
     props:{
       about
-    }
+    },
+    revalidate: 60* 15
   }
 }
