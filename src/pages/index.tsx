@@ -27,7 +27,7 @@ export default function Home({content}:Props) {
   return (
     <>
       <Head>
-        <title>Apaixonado por tecnologia - Sujeito Programador</title>
+        <title>Fundação Dev</title>
       </Head>
       <C.container>
         <div className="containerHeader">
