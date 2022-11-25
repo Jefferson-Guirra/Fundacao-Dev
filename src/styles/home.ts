@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-export const container = styled.div`
-display:block;
 
+export const container = styled.div`
+overflow:hidden;
 .containerHeader{
   min-height: calc(100vh - 5rem);
-  max-width:1120px;
   padding-inline:2rem;
   margin: 0 auto;
   display:flex;
+  max-width:1120px;
   align-items:center;
   justify-content:space-between;
   
@@ -41,6 +41,7 @@ display:block;
     max-width:640px;
   }
 }
+
 @media (max-width:1095px){
   .containerHeader{
     padding:0 2rem;
@@ -57,8 +58,8 @@ display:block;
 
 @media (max-width:950px){
   .containerHeader{
+    margin:0 auto;
     flex-direction:column;
-
     button{
       width:100%;
       display:flex;
@@ -90,7 +91,7 @@ export const sectionContent = styled.div`
   }
 
   img {
-    max-width: 550px;
+    width: 550px;
   }
   h2 {
     font-size: 2.2rem;

@@ -29,6 +29,7 @@ export default function Home({content}:Props) {
       <Head>
         <title>Fundação Dev</title>
       </Head>
+
       <C.container>
         <div className="containerHeader">
           <section className="ctaText">
