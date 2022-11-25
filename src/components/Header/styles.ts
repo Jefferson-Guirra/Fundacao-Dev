@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const headerContainer = styled.header`
   height: 6rem;
@@ -24,7 +24,7 @@ export const headerContainer = styled.header`
         font-size: 1.5rem;
         span {
           top: 50%;
-          color: #d91a1a;
+          color: #1fa4e5;
         }
       }
     }
